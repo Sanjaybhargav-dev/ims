@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Supplier</title>
+    <style>
+        /* Add your CSS styling here */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Show Supplier</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Supplier ID</th>
+                <th>Supplier Name</th>
+                <th>Supplier Address</th>
+                <th>Supplier Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for supplier in data %}
+            <tr>
+                <td>{{ supplier['supplier_id'] }}</td>
+                <td>{{ supplier['supplier_name'] }}</td>
+                <td>{{ supplier['supplier_addr'] }}</td>
+                <td>{{ supplier['supplier_email'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

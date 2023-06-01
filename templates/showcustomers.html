@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Customers</title>
+    <style>
+        body {
+            background-color: #f2f2f2; /* Set background color */
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff; /* Set container background color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fade-in 1s ease;
+        }
+        
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #ffc107; /* Highlighted good color on hover */
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Customer List</h1>
+        <table>
+            <tr>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+                <th>Customer Address</th>
+                <th>Customer Email</th>
+            </tr>
+            {% for customer in data %}
+            <tr>
+                <td>{{ customer['customer_id'] }}</td>
+                <td>{{ customer['customer_name'] }}</td>
+                <td>{{ customer['customer_address'] }}</td>
+                <td>{{ customer['customer_email'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

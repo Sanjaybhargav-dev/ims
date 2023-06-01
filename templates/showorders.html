@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Orders</title>
+    <style>
+        /* CSS animation styles */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Customize the animation duration and timing function */
+        .fade-in-animation {
+            animation: fade-in 1s ease-in;
+        }
+    </style>
+    <script>
+        // JavaScript animation
+        window.addEventListener('DOMContentLoaded', function() {
+            const orderElements = document.querySelectorAll('.order');
+
+            orderElements.forEach(function(element, index) {
+                setTimeout(function() {
+                    element.classList.add('fade-in-animation');
+                }, index * 100); // Delay the animation of each order by 100ms
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Show Orders</h1>
+    <div>
+        {% for order in data %}
+        <div class="order">
+            <p>Order ID: {{ order['order_id'] }}</p>
+            <p>Product ID: {{ order['product_id'] }}</p>
+            <p>Customer ID: {{ order['customer_id'] }}</p>
+            <p>Quantity: {{ order['quantity'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

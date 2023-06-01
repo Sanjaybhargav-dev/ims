@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update Customer</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    /* Add your custom styles here */
+  </style>
+</head>
+<body>
+  <h1>Update Customer</h1>
+  <form action="/update-customer" method="POST">
+    <label for="customerid">Customer ID:</label>
+    <input type="text" id="customerid" name="customerid" required><br><br>
+
+    <label for="change">Change:</label>
+    <select id="change" name="change" required>
+      <option value="customer_name">Customer Name</option>
+      <option value="customer_addr">Customer Address</option>
+      <option value="customer_email">Customer Email</option>
+    </select><br><br>
+
+    <label for="newvalue">New Value:</label>
+    <input type="text" id="newvalue" name="newvalue" required><br><br>
+
+    <input type="submit" value="Update">
+  </form>
+</body>
+</html>
