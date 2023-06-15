@@ -150,24 +150,92 @@ def supplier_show():
     return render_template('showsupplier.html',data = data)
 
 
-@app.route('/update-suppliers' ,methods = ['GET','POST'])   
-def updatesuppliers():
-    if request.method=='POST':
-        cn = conn.cursor()
-        supplierid = request.form.get("supplierid")
-        change =request.form.get("change")
-        newvalue = request.form.get("newvalue")
-        cn.execute(f"update suppliers set {change} = '{newvalue}' where supplier_id = '{supplierid}'")
+@app.route('/update-supplier',methods= ['GET','POST'])
+def updatesupplier():
+    if request.method== 'POST':
+        cn=conn.cursor()
+        supplier_id= request.form.get('supplier_id')
+        change= request.form.get('change')
+        newvalue= request.form.get('newvalue')
+        print(supplier_id,change,newvalue)
+        cn.execute(f"update supplier set {change}='{newvalue}' where supplier_id='{supplier_id}'")
         conn.commit()
-        print('Data has been updates')
-        return jsonify({'message':'sucessfull'})
+        print('data has been updated successfully!')
+        return jsonify({'message':'successful'})
     else:
-        return render_template('updatesuppliers.html')
+        return render_template('updatesupplier.html')
+
+
+@app.route('/add-supplier',methods=['GET','POST'])
+def addsupplier():
+    if request.method=='POST':
+        cn=conn.cursor()
+        supplier_name=request.form.get('supplier_name')
+        supplier_addr=request.form.get('supplier_addr')
+        supplier_mail=request.form.get('supplier_mail')
+        cn.execute(f"insert into supplier(supplier_name,supplier_addr,supplier_mail) values ('{supplier_name}','{supplier_addr}','{supplier_mail}')")
+        conn.commit()
+        print('Data has been inserted')
+        return jsonify({'message':'successful'})
+    else:
+        return render_template('addsupplier.html')
 
 
 
-if __name__ == '__main__':
+@app.route('/delete-customer',methods=['GET','POST'])
+def deletecustomer():
+    if request.method=='POST':
+        cn=conn.cursor()
+        customer_id=request.form.get('customer_id')
+        cn.execute(f"delete from customer where cust_id ='{customer_id}'")
+        conn.commit()
+        return jsonify({'message':'successful'})
+    else:
+        return render_template('deletecustomer.html')
+
+
+@app.route('/delete-supplier',methods=['GET','POST'])
+def deletesupplier():
+    if request.method=='POST':
+        cn=conn.cursor()
+        supplier_id=request.form.get('supplier_id')
+        cn.execute(f"delete from supplier where supplier_id ='{supplier_id}'")
+        conn.commit()
+        return jsonify({'message':'successful'})
+    else:
+        return render_template('deletesupplier.html')
+
+
+
+
+@app.route('/delete-orders',methods=['GET','POST'])
+def deleteorders():
+    if request.method=='POST':
+        cn=conn.cursor()
+        orders_id=request.form.get('orders_id')
+        cn.execute(f"delete from orders where orders_id ='{orders_id}'")
+        conn.commit()
+        return jsonify({'message':'successful'})
+    else:
+        return render_template('deleteorders.html')
+
+
+@app.route('/delete-product',methods=['GET','POST'])
+def deleteproduct():
+    if request.method=='POST':
+        cn=conn.cursor()
+        product_id=request.form.get('product_id')
+        cn.execute(f"delete from product where product_id ='{product_id}'")
+        conn.commit()
+        return jsonify({'message':'successful'})
+    else:
+        return render_template('deleteproduct.html')
+
+
+
+if __name__ == '__main__': 
     app.run()
+
 
 
 

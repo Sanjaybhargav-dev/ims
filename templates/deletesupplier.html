@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Supplier</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Delete Supplier</h2>
+        <form id="deleteForm" action="/delete-supplier" method="POST">
+            <div class="form-group">
+                <label for="supplier_id">Supplier ID:</label>
+                <input type="text" id="supplier_id" name="supplier_id" required>
+            </div>
+            <button class="btn" type="submit">Delete</button>
+        </form>
+    </div>
+
+    <script>
+        // Animation on form submission
+        document.getElementById("deleteForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Add animation class to the container
+            document.querySelector('.container').classList.add('animate__animated', 'animate__fadeOut');
+            
+            // Delay the actual form submission to allow animation to complete
+            setTimeout(function() {
+                event.target.submit(); // Submit the form
+            }, 1000); // Change the delay (in milliseconds) as per your preference
+        });
+    </script>
+</body>
+</html>
